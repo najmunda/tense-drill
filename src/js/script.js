@@ -1,4 +1,4 @@
-import { setLightMode } from "./util";
+import { setLightMode, setQuestionTense } from "./util";
 
 // First visit
 if (!localStorage.getItem("td_light_mode")) {
@@ -17,3 +17,7 @@ document.getElementById("light-dark-toggle").addEventListener('click', function(
     setLightMode(true);
   }
 });
+
+// Set quiz sentence
+const taskTense = setQuestionTense();
+console.log(taskTense.questionTenses, taskTense.answerTenses);
