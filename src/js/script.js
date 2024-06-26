@@ -1,4 +1,4 @@
-import { setLightMode, setQuestionTense } from "./util";
+import { setLightMode, newQNA, showQNA, handleFormSubmit, handleFormChange } from "./util";
 
 // First visit
 if (!localStorage.getItem("td_light_mode")) {
@@ -18,6 +18,26 @@ document.getElementById("light-dark-toggle").addEventListener('click', function(
   }
 });
 
-// Set quiz sentence
-const taskTense = setQuestionTense();
-console.log(taskTense.questionTenses, taskTense.answerTenses);
+function newSession() {
+  // Set new session (for initiate or reset)
+  let trial = 3;
+  const session =  {...newQNA()};
+  showQNA(session.questionSentence, session.answerTense, session.answerForm);
+
+  // Add event listener to answer form
+  document.getElementById("quiz").addEventListener('submit', function(event) {
+    trial = handleFormSubmit(session.answerSentence, session.answerTense, session.answerForm, trial);
+    event.preventDefault();
+  });
+  document.getElementById("quiz").addEventListener('input', function(event) {
+    handleFormChange();
+    event.preventDefault();
+  });
+
+  // Add event listener to reset/newquestion button
+  document.getElementById("reset-button").addEventListener('click', function(event) {
+    newSession();
+  }, {once: true});
+}
+
+newSession();
