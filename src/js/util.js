@@ -116,7 +116,7 @@ function showAnswer(isInputsCorrect, answerSentence, answerTense, answerForm) {
   document.querySelector('#review').style.opacity = 1;
   setTimeout(() => {
     document.getElementById("reset-button").focus();
-  }, 0);
+  }, 500);
 }
 
 export function handleFormSubmit(answerSentence, answerTense, answerForm, trial) {
