@@ -8,7 +8,9 @@ const tenses = [
     formula: {
       Affirmative: 'S + V1(-s) + O',
       Negative: 'S + do/does not + V1 + O',
+      Question: 'do/does + S + V1 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
@@ -23,6 +25,12 @@ const tenses = [
           } else {
             return `${subject} do not ${verb.v1} ${object}`;
           }
+        case 'Question':
+          if (['He', 'She', 'It'].includes(subject)) {
+            return `Does ${subject} ${verb.v1} ${object}?`;
+          } else {
+            return `Do ${subject} ${verb.v1} ${object}?`;
+          }
         default:
           break;
       }
@@ -34,13 +42,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + V2 + O',
       Negative: 'S + did not + V1 + O',
+      Question: 'did + S + V1 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} ${verb.v2} ${object}`;
         case 'Negative':
           return `${subject} did not ${verb.v1} ${object}`;
+        case 'Question':
+          return `Did ${subject} ${verb.v1} ${object}?`;
         default:
           break;
       }      
@@ -52,13 +64,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + will + V1 + O',
       Negative: 'S + will not + V1 + O',
+      Question: 'will + S + V1 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} will ${verb.v1} ${object}`;
         case 'Negative':
           return `${subject} will not ${verb.v1} ${object}`;
+        case 'Question':
+          return `Will ${subject} ${verb.v1} ${object}?`;
         default:
           break;
       }
@@ -71,7 +87,9 @@ const tenses = [
     formula: {
       Affirmative: 'S + be (am/is/are) + Ving + O',
       Negative: 'S + be (am/is/are) + not + Ving + O',
+      Question: 'be(am/is/are) + S + Ving + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
@@ -90,6 +108,14 @@ const tenses = [
           } else {
             return `${subject} am not ${verb.ving} ${object}`;
           }
+        case 'Question':
+          if (['He', 'She', 'It'].includes(subject)) {
+            return `Is ${subject} ${verb.ving} ${object}?`;
+          } else if (['You', 'They', 'We'].includes(subject)) {
+            return `Are ${subject} ${verb.ving} ${object}?`;
+          } else {
+            return `Am ${subject} ${verb.ving} ${object}?`;
+          }
         default:
           break;
       }
@@ -101,7 +127,9 @@ const tenses = [
     formula: {
       Affirmative: 'S + be (was/were) + Ving + O',
       Negative: 'S + be (was/were) + not + Ving + O',
-    }, 
+      Question: 'be (was/were) + S + Ving + O ?',
+    },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
@@ -116,6 +144,12 @@ const tenses = [
           } else {
             return `${subject} was not ${verb.ving} ${object}`;
           }
+        case 'Question':
+          if (['You', 'They', 'We'].includes(subject)) {
+            return `Were ${subject} ${verb.ving} ${object}?`;
+          } else {
+            return `Was ${subject} ${verb.ving} ${object}?`;
+          }
         default:
           break;
       }
@@ -127,13 +161,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + will be + V-ing + O',
       Negative: 'S + will not be + V-ing + O',
-    }, 
+      Question: 'will + S + be + Ving + O ?',
+    },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} will be ${verb.ving} ${object}`
         case 'Negative':
           return `${subject} will not be ${verb.ving} ${object}`
+        case 'Question':
+          return `Will ${subject} be ${verb.ving} ${object}?`
         default:
           break;
       }
@@ -146,7 +184,9 @@ const tenses = [
     formula: {
       Affirmative: 'S + have/has + V3 + O',
       Negative: 'S + have/has + not + V3 + O',
+      Question: 'have/has + S + V3 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
@@ -161,6 +201,12 @@ const tenses = [
           } else {
             return `${subject} have not ${verb.v3} ${object}`;
           }
+        case 'Question':
+          if (['He', 'She', 'It'].includes(subject)) {
+            return `Has ${subject} ${verb.v3} ${object}?`;
+          } else {
+            return `Have ${subject} ${verb.v3} ${object}?`;
+          }
         default:
           break;
       }
@@ -172,13 +218,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + had + V3 + O',
       Negative: 'S + had not + V3 + O',
+      Question: 'had + S + V3 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} had ${verb.v3} ${object}`;
         case 'Negative':
           return `${subject} had not ${verb.v3} ${object}`;
+        case 'Question':
+          return `Had ${subject} ${verb.v3} ${object}?`;
         default:
           break;
       }
@@ -190,13 +240,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + will have + V3 + O',
       Negative: 'S + will not have + V3 + O',
+      Question: 'will + S + have + V3 + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} will have ${verb.v3} ${object}`;
         case 'Negative':
           return `${subject} will not have ${verb.v3} ${object}`;
+        case 'Question':
+          return `Will ${subject} have ${verb.v3} ${object}?`;
         default:
           break;
       }
@@ -209,7 +263,9 @@ const tenses = [
     formula: {
       Affirmative: 'S + have/has + been + V-ing + O',
       Negative: 'S + have/has + not been + V-ing + O',
+      Question: 'have/has + S + been + V-ing + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
@@ -224,6 +280,12 @@ const tenses = [
           } else {
             return `${subject} have not been ${verb.ving} ${object}`;
           }
+        case 'Question':
+          if (['He', 'She', 'It'].includes(subject)) {
+            return `Has ${subject} been ${verb.ving} ${object}?`;
+          } else {
+            return `Have ${subject} been ${verb.ving} ${object}?`;
+          }
         default:
           break;
       }
@@ -235,13 +297,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + had been + V-ing + O',
       Negative: 'S + had not been + V-ing + O',
+      Question: 'had + S + been + V-ing + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
           return `${subject} had been ${verb.ving} ${object}`;
         case 'Negative':
           return `${subject} had not been ${verb.ving} ${object}`;
+        case 'Question':
+          return `Had ${subject} been ${verb.ving} ${object}?`;
         default:
           break;
       }
@@ -253,13 +319,17 @@ const tenses = [
     formula: {
       Affirmative: 'S + will have been + V-ing + O',
       Negative: 'S + will not have been + V-ing + O',
+      Question: 'will + S + have been + V-ing + O ?',
     },
+    use: [],
     arrangeSentence: (subject, verb, object, form) => {
       switch (form) {
         case 'Affirmative':
-          return `${subject} will have been ${verb.ving} ${object}` ;
+          return `${subject} will have been ${verb.ving} ${object}`;
         case 'Negative':
-          return `${subject} will not have been ${verb.ving} ${object}` ;
+          return `${subject} will not have been ${verb.ving} ${object}`;
+        case 'Question':
+          return `Will ${subject} have been ${verb.ving} ${object}?`;
         default:
           break;
       }

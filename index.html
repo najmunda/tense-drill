@@ -10,20 +10,20 @@
   </head>
   <body class="vh-100 d-flex flex-column">
     <main class="mx-auto px-5 flex-grow-1 d-flex flex-column justify-content-center align-items-center gap-4 bg-body">
-      <form id="quiz" class="d-flex flex-column align-items-center position-relative">
+      <form id="quiz" class="d-flex flex-column align-items-center position-relative" style="opacity: 0;">
         <p id="question" class="fs-1 fw-bold text-center">Subject learn tenses</p>
-        <p id="instruction" class="fs-5 text-center">Change to tenses form</p>
+        <p id="order" class="fs-5 text-center">Change to tenses form</p>
         <input id="answer-form" type="text" name="answer" rows="1" autofocus class="form-control text-center" style="resize: none;" placeholder="Type answer here" autocomplete="off" aria-describedby="answer-feedback">
         <div id="answer-feedback" class="invalid-tooltip text-center mt-2">You have 3 chances</div>
       </form>
-      <div id="review" class="d-flex flex-column align-items-center">
+      <div id="review" class="d-flex flex-column align-items-center" style="opacity: 0; visibility: hidden;">
         <p id="correct-answer" class="fs-3 fw-bold text-success-emphasis text-center">Subject learn tenses</p>
         <p id="answer-formula" class="fs-5 text-center">S + V + O</p>
-        <button id="reset-button" class="btn border">Next Question <i class="bi bi-arrow-return-left"></i></button>
+        <button type="button" id="reset-button" class="btn border">Next Question <i class="bi bi-arrow-return-left"></i></button>
       </div>
     </main>
     <footer class="d-flex flex-row justify-content-between align-items-center px-5 py-3">
-      <div class="hstack gap-2">
+      <div id="app-title" class="hstack gap-2" style="cursor: help;" data-bs-toggle="modal" data-bs-target="#app-about-modal">
         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M491-339q70 0 119-45t49-109q0-57-36.5-96.5T534-629q-47 0-79.5 30T422-525q0 19 7.5 37t21.5 33l57-57q-3-2-4.5-5t-1.5-7q0-11 9-17.5t23-6.5q20 0 33 16.5t13 39.5q0 31-25.5 52.5T492-418q-47 0-79.5-38T380-549q0-29 11-55.5t31-46.5l-57-57q-32 31-49 72t-17 86q0 88 56 149.5T491-339ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l52 205q5 19-7 34.5T840-360h-80v120q0 33-23.5 56.5T680-160h-80v80H240Z"/></svg>
         <p class="mb-0 fs-3 fw-bold">Tense Drill</p>
       </div>
@@ -31,11 +31,30 @@
         <button type="button" class="btn p-0" id="light-dark-toggle">
           <i class="fs-3 bi bi-sun-fill"></i>
         </button>
-        <a href="https://github.com/najmunda/tense-drill" class="link-body-emphasis">
-          <i class="fs-3 bi bi-github"></i>
-        </a>
       </menu>
     </footer>
+    <div id="app-about-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border border-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex flex-column justify-content-center align-items-center gap-2">
+            <div id="app-title" class="d-flex flex-column align-items-center gap-2">
+              <img src="/logo.svg" height="75px" alt="">
+              <p class="mb-0 fs-3 fw-bold">Tense Drill</p>
+            </div>
+            <p class="mb-0 fs-6 text-center">tense-drill is a simple web app that drills English tenses.</p>
+            <p class="mb-0 fs-6 fw-light text-center">Built with <a href="https://vitejs.dev">Vite</a> and <a href="https://getbootstrap.com/">Bootstrap</a>.</p>
+            <p class="mb-0 fs-6 fw-light text-center">Icon by <a href="https://icons.getbootstrap.com/">bootstrap-icons</a> and <a href="https://fonts.google.com/icons">Google Icons</a>.</p>
+            <a href="https://github.com/najmunda/tense-drill" class="link-body-emphasis">
+              <i class="fs-3 bi bi-github"></i>
+            </a>
+          </div>
+          <div class="modal-footer border border-0"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/js/script.js"></script>
   </body>
 </html>

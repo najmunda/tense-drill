@@ -5,3 +5,21 @@
       visibility: hidden;
   }
 }
+
+body, main, .form-control {
+  -webkit-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+}
+
+#review {
+  transition: opacity 150ms, visibility 150ms;
+}
+
+#quiz {
+  transition: opacity 150ms;
+}
+
+#answer-form {
+  padding-right: calc(1.5em + 0.75rem);
+}

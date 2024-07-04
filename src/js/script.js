@@ -18,11 +18,11 @@ document.getElementById("light-dark-toggle").addEventListener('click', function(
   }
 });
 
-function newSession() {
+async function newSession() {
   // Set new session (for initiate or reset)
   let trial = 3;
   const session =  {...newQNA()};
-  showQNA(session.questionSentence, session.answerTense, session.answerForm);
+  await showQNA(session.questionSentence, session.order, session.answerTense, session.answerForm);
 
   // Add event listener to answer form
   document.getElementById("quiz").addEventListener('submit', function(event) {

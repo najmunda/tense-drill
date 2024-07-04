@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 # Other file
-todoNplan.md
-tense-table.webp
+/other/*
